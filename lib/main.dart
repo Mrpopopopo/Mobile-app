@@ -34,8 +34,7 @@ class RandomNumbers extends StatefulWidget {
 }
 
 class _RandomNumbersState extends State<RandomNumbers> {
-
-  final items = List<ListItem>.generate(100,(i) => HeadingItem(i+1));
+  final items = List<ListItem>.generate(100, (i) => HeadingItem(i + 1));
   Iterable<ListItem> tmpItems = [];
 
   @override
@@ -62,7 +61,7 @@ class _RandomNumbersState extends State<RandomNumbers> {
             child: const Icon(Icons.navigation),
           );
         }
-        final item = tmpItems.elementAt(i-2);
+        final item = tmpItems.elementAt(i - 2);
         return ListTile(
           title: item.buildTitle(context),
         );
@@ -75,7 +74,7 @@ class _RandomNumbersState extends State<RandomNumbers> {
    */
   void showEven() {
     setState(() {
-      //TODO
+      tmpItems = items.where((element) => element.number.isEven);
     });
   }
 
@@ -85,7 +84,8 @@ class _RandomNumbersState extends State<RandomNumbers> {
    */
   void showID() {
     setState(() {
-      //TODO
+      tmpItems = items
+          .where((element) => '630510623'.contains(element.number.toString()));
     });
   }
 }
@@ -96,7 +96,6 @@ abstract class ListItem {
 }
 
 class HeadingItem implements ListItem {
-
   HeadingItem(this.number);
 
   @override
@@ -110,4 +109,3 @@ class HeadingItem implements ListItem {
   @override
   int number;
 }
-
